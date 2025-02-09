@@ -9,13 +9,13 @@
    
 
     <body>
-        {% comment %} <!-- Spinner Start -->
+        <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">HOREN.....</span>
             </div>
         </div>
-        <!-- Spinner End --> {% endcomment %}
+        <!-- Spinner End -->
 
         <div class="container">
             <div class="row g-5">
@@ -181,7 +181,7 @@
                                 <div class="col-md-6">
                                     <div class="service-item">
                                         <i class="fab fa-2x {{service.service_fontawesome}} mx-auto mb-4"></i>
-                                        <h5 class="mb-2">Apps Development</h5>
+                                        <h5 class="mb-2">{{service.service_title}}</h5>
                                         <p class="mb-0">{{service.service_details}}</p>
                                     </div>
                                 </div>

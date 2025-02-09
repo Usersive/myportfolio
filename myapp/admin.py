@@ -45,8 +45,6 @@ class TestimonialAdmin(admin.ModelAdmin):
     thumbnail.short_description = 'Image'
     list_display =[ 'thumbnail', 'test_client_name','test_client_profess',]
     list_display_links=( 'thumbnail','test_client_name','test_client_profess',)
-    def has_add_permission(self, request):
-        return not Testimonial.objects.exists() 
 
 class SkillAdmin(admin.ModelAdmin):
     list_display =[ 'skill_heading','skill_percent',]
@@ -57,14 +55,11 @@ class SkillAdmin(admin.ModelAdmin):
 class ServiceAdmin(admin.ModelAdmin):
     list_display =[ 'service_title','service_details',]
     list_display_links=('service_title','service_details',)
-    def has_add_permission(self, request):
-        return not Service.objects.exists() 
+
 
 class SentEmailAdmin(admin.ModelAdmin):
     list_display =[ 'sender_name','sender_email', 'subject', 'sent_at', ]
     list_display_links=('sender_name','sender_email',)
-    def has_add_permission(self, request):
-        return not SentEmail.objects.exists() 
 
 @admin.action(description="Resubscribe selected users")
 def resubscribe_users(modeladmin, request, queryset):

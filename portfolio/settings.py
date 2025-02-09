@@ -40,6 +40,7 @@ DEBUG = os.environ.get('DEBUG', 'True')=="True"
 
 
 ALLOWED_HOSTS = ['127.0.0.1', 'lawalportfolio.onrender.com',]
+# ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -159,16 +160,17 @@ USE_TZ = True
 DEFAULT_FILE_STORAGE ='cloudinary_storage.storage.RawMediaCloudinaryStorage'
 STATIC_URL = '/static/'
 STATIC_ROOT=BASE_DIR /'static'
-
+STATICFILES_DIRS=[
+    'portfolio/static',
+]
+STATICFILES_DIR     = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR /'media'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 from django.contrib.messages import constants as messages
@@ -224,3 +226,9 @@ JAZZMIN_SETTINGS ={
     "copyright": "  Horen Technologies",
     "site_logo":"img/loder.png"
 }
+
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

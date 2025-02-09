@@ -60,7 +60,7 @@ INSTALLED_APPS = [
     # 'compressor',
     # 'corsheaders',
     
-    'admin_honeypot',
+    # 'admin_honeypot',
     'cloudinary_storage',
     'cloudinary',
 ]

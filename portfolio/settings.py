@@ -38,8 +38,10 @@ DEBUG = os.environ.get('DEBUG', 'True')=="True"
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 
-ALLOWED_HOSTS = []
 
+
+ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'https://lawalportfolio.onrender.com']
 
 # Application definition
 

@@ -39,7 +39,7 @@ DEBUG = os.environ.get('DEBUG', 'True')=="True"
 # DEBUG = True
 
 
-ALLOWED_HOSTS = ['https://lawalportfolio.onrender.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'https://lawalportfolio.onrender.com']
 
 # Application definition
 

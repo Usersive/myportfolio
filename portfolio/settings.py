@@ -15,6 +15,7 @@ from pathlib import Path
 from decouple import config
 from django.contrib import messages
 import environ
+import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 
@@ -58,10 +59,7 @@ INSTALLED_APPS = [
 
     'django.contrib.sites',
     'django.contrib.sitemaps',
-    # 'compressor',
-    # 'corsheaders',
-    
-    # 'admin_honeypot',
+   
     'cloudinary_storage',
     'cloudinary',
 ]
@@ -157,12 +155,14 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
+
 DEFAULT_FILE_STORAGE ='cloudinary_storage.storage.RawMediaCloudinaryStorage'
+
 STATIC_URL = '/static/'
 STATIC_ROOT=BASE_DIR /'static'
-STATICFILES_DIRS=[
-    'portfolio/static',
-]
+# STATICFILES_DIRS=[
+#     'portfolio/static',
+# ]
 STATICFILES_DIR     = [os.path.join(BASE_DIR, 'static')]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
@@ -171,6 +171,11 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR /'media'
 
 
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 
 from django.contrib.messages import constants as messages
@@ -212,11 +217,6 @@ DEFAULT_FILE_STORAGE ='cloudinary_storage.storage.RawMediaCloudinaryStorage'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 JAZZMIN_SETTINGS ={
     "site_header": "MY PORTFOLIO",

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Subscription Confirmation</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
+        .container { background: white; padding: 20px; border-radius: 5px; max-width: 500px; margin: auto; }
+        h2 { color: #333; }
+        p { color: #555; }
+        .footer { font-size: 12px; color: #888; margin-top: 20px; }
+        a { color: red; text-decoration: none; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome to Our Newsletter!</h2>
+        <p>Dear Subscriber,</p>
+        <p>Thank you for subscribing to our newsletter! You will receive regular updates and exclusive content from us on web development trends.</p>
+        <p>Stay tuned!</p>
+        <p>Best regards,<br><strong>Horen Technologies</strong></p>
+        <p class="footer">
+            If you no longer wish to receive our emails, you can 
+            <a href="{{ unsubscribe_link }}">unsubscribe here</a>.
+        </p>
+    </div>
+</body>
+</html>

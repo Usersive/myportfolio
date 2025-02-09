@@ -1,0 +1,54 @@
+{% load static %}   
+   
+   <!-- Footer Start -->
+   <section class="wow fadeIn" data-wow-delay="0.1s">
+    <div class="bg-secondary text-light text-center p-5">
+        <div class="d-flex justify-content-center mb-4">
+            {%for link in links%}
+                <a class="btn btn-secondary btn-square mx-1" href="{{link.link_address}}"><i class="{{link.link}}"></i></a>
+            {%endfor%}
+        </div>
+        <div class="d-flex justify-content-center mb-3">
+            <a class="text-light px-3 border-end" href="#">Privacy</a>
+            <a class="text-light px-3 border-end" href="#">Terms</a>
+            <a class="text-light px-3 border-end" href="#">FAQs</a>
+            <a class="text-light px-3" href="#">Help</a>
+        </div>
+        <hr>
+        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+        <p class="m-0">&copy; 2022 - {{current_year}}  Designed By: || <a href="#"> HOREN TECHNOLOGIES </a></p>
+    </div>
+</section>
+<!-- Footer End -->
+</div>
+</div>
+</div>
+
+
+<!-- Back to Top -->
+{% comment %} <a href="#" class="back-to-top"><i class="fa fa-angle-double-up"></i></a> {% endcomment %}
+<a href="https://api.whatsapp.com/send/?phone=+2348163273460&text=I%27m+interested+in+your+work" 
+class="whatsapp"><i class="faa fa fa-whatsapp"></i></a>
+
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="{% static 'lib/wow/wow.min.js'%}"></script>
+<script src="{% static 'lib/typed/typed.min.js'%}"></script>
+<script src="{% static 'lib/easing/easing.min.js'%}"></script>
+<script src="{% static 'lib/waypoints/waypoints.min.js'%}"></script>
+<script src="{% static 'lib/counterup/counterup.min.js'%}"></script>
+<script src="{% static 'lib/owlcarousel/owl.carousel.min.js'%}"></script>
+<script src="{% static 'lib/isotope/isotope.pkgd.min.js'%}"></script>
+<script src="{% static 'lib/lightbox/js/lightbox.min.js'%}"></script>
+
+
+<!-- Template Javascript -->
+<script src="{% static 'js/main.js'%}"></script>
+
+<script>
+setTimeout(function(){
+    $('#message').fadeOut('slow')
+  }, 4000)
+
+</script>

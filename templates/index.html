@@ -1,0 +1,362 @@
+{% extends 'base.html'%}
+{% load static%}
+{% block content %}
+{% comment %} {{ block.super }} {% endcomment %}
+
+
+
+<html lang="en">
+   
+
+    <body>
+        {% comment %} <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">HOREN.....</span>
+            </div>
+        </div>
+        <!-- Spinner End --> {% endcomment %}
+
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-4 sticky-lg-top vh-100">
+                    <div class="d-flex flex-column h-100 text-center overflow-auto shadow">
+                        {%if profiles%}
+                            <img class="w-100 img-fluid mb-4" src="/media/{{profiles.profile_image}}" alt="Image">
+
+                            
+                                <h1 class="text-primary mt-2">{{profiles.full_name}}</h1>
+                            
+
+                            <div class="mb-4" style="height: 22px;">
+                                <h4 class="typed-text-output d-inline-block text-light"></h4>
+                                <div class="typed-text d-none">{{profiles.profes}}</div>
+                            </div>
+                            <hr color="grey">
+                        {%else%}
+                            <span>No Record Found</span>
+                        {%endif%}
+                        
+                        <div class="d-flex justify-content-center mt-auto mb-3">
+                            {%for link in links%}
+                                <a class="btn btn-secondary btn-square mx-1" href="{{link.link_address}}"><i class="{{link.link}}"></i></a>
+                            {%endfor%}
+                        </div>
+                        
+                        
+                        <div class="d-flex align-items-end justify-content-between border-top">
+                            {% if file %}
+                                <a href="{% url 'download_file' file.id %}"class="btn w-50 border-end">{{file.name}}</a>
+                            
+                            {% else %}
+                                <span class="btn w-50 btn-scroll">Not Available</span>
+                            {% endif %}
+                            <a href="#contact" class="btn w-50 btn-scroll">Contact Me</a>
+                        </div>               
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <!-- About Start -->
+                    {% include 'includes/alerts.html' %}
+                    <section class="py-5 border-bottom wow fadeInUp" data-wow-delay="0.1s">
+
+                        {%if introductions%}
+
+                        <h1 class="title pb-3 mb-5">{{introductions.intro_heading}}</h1>
+                        <p>{{introductions.intro}}</p>
+                        {%else%}
+                        <span> No Record Found</span>
+                        {%endif%}
+
+                        {%if abouts%}
+
+                        <div class="row mb-4">
+                        <h1 class="title pb-3 mb-5">{{abouts.about_heading}}</h1>
+                        
+                            <p>{{abouts.about}}</p>
+                        {%else%}
+                        <span>No Record Found</span>
+                        {%endif%}
+                        <br>
+                            <div class="row mb-4">
+                                {%if profiles%}
+                                    <div class="col-sm-6 py-1">
+                                        <span class="fw-medium text-primary">Name:</span> {{profiles.full_name}}
+                                    </div>
+                                    <div class="col-sm-6 py-1">
+                                        <span class="fw-medium text-primary">Experience:</span> {{profiles.experience}}
+                                    </div>
+                                    <div class="col-sm-6 py-1">
+                                        <span class="fw-medium text-primary">Phone:</span> {{profiles.phone}}
+                                    </div>
+                                    <div class="col-sm-6 py-1">
+                                        <span class="fw-medium text-primary">Email:</span> {{profiles.email_add}}
+                                    </div>
+                                    <div class="col-sm-6 py-1">
+                                        <span class="fw-medium text-primary">Address:</span> {{profiles.address}}
+                                    </div>
+                                    <div class="col-sm-6 py-1">
+                                        <span class="fw-medium text-primary">Freelance:</span> {{profiles.freelance}}
+                                    </div>
+                                {%else%}
+                                    <span> No Recond Found</span>
+                                {%endif%}
+                        </div>
+                        <div class="row g-4">
+                            
+                            {% for client in clients %}
+                            <div class="col-md-4 col-lg-6 col-xl-4">
+                                <div class="d-flex bg-secondary p-4">
+                                    <h1 class="flex-shrink-0 display-5 text-primary mb-0" data-toggle="counter-up">{{client.numbers}}</h1>
+                                    <div class="ps-3">
+                                        <p class="mb-0">{{client.description}}</p>
+                                        <h5 class="mb-0">{{client.details}}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                            {%endfor%}
+                            
+                            
+                        </div>
+                    </section>
+                    <!-- About End -->
+
+                    <!-- Skills Start -->
+                    <section class="py-5 border-bottom wow fadeInUp" data-wow-delay="0.1s">
+                        <h1 class="title pb-3 mb-5">Skills</h1>
+                        <p class="mb-4"> I specialize in web development with expertise in Python, Django, WordPress and more. From Backend Logic to Frontend designs,
+                            I build seamless and efficient web applications tailored to user needs. </p>
+                        <div class="row">
+                            {%for skill in skills%}
+                            <div class="col-sm-6">
+
+                                
+
+                                <div class="skill mb-4">
+                                    <div class="d-flex justify-content-between">
+                                        <p class="mb-2">{{skill.skill_heading}}</p>
+                                        <p class="mb-2">{{skill.skill_percent}}%</p>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar {{skill.skill_color}}" role="progressbar" aria-valuenow="{{skill.skill_percent}}" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+                            {%endfor%}
+                        </div>
+                    </section>
+                    <!-- Skills End -->
+
+                    <!-- Expericence Start -->
+                    <section class="py-5 wow fadeInUp" data-wow-delay="0.1s">
+                        <h1 class="title pb-3 mb-5">Expericence</h1>
+                        <p class="mb-4"> With hands-on experience in web development, I specialize in Python, Django, React, WordPress and full-stack solutions.
+                            From building dynamic web applications to optimizing performation, I've worked on diverse projects that showecase my skills and expertise. </p>
+                        <div class="border-start border-2 border-light pt-2 ps-5">
+
+                            {% for experience in experiences %}
+                            <div class="position-relative mb-4">
+                                <span class="bi bi-arrow-right fs-4 text-light position-absolute" style="top: -5px; left: -50px;"></span>
+                                <h5 class="mb-1">{{experience.title}}</h5>
+                                <p class="mb-2">{{experience.short_title}} | <small> {{experience.year}}</small></p>
+                                <p>{{experience.details}}</p>
+                            </div>
+                            {%endfor%}
+                            
+                        </div>
+                    </section>
+                    <!-- Expericence End -->
+
+                   
+
+                    <!-- Services Start -->
+                    <section class="py-5 border-bottom wow fadeInUp" data-wow-delay="0.1s">
+                        <h1 class="title pb-3 mb-5">Services</h1>
+                        <p class="mb-4">I offer professional web development services, including FrontEnd and BackEnd development using Django, React and more. 
+                            Whether you need a website, a web app or a custom solution, I'm here to help. Let's build something great together!  </p>
+                        <div class="row g-4">
+                            {%for service in services%}
+                                <div class="col-md-6">
+                                    <div class="service-item">
+                                        <i class="fab fa-2x {{service.service_fontawesome}} mx-auto mb-4"></i>
+                                        <h5 class="mb-2">Apps Development</h5>
+                                        <p class="mb-0">{{service.service_details}}</p>
+                                    </div>
+                                </div>
+                            {%endfor%}
+                        </div>
+                    </section>
+                    <!-- Services End -->
+                    
+
+                    <!-- Portfolio Start -->
+                    <section class="py-5 border-bottom wow fadeInUp" data-wow-delay="0.1s">
+                        <h1 class="title pb-3 mb-5">Projects</h1>
+                        <p class="mb-4">Here are some of the projects I have worked on, showcasing my expertise in Django, React and full stack development. From web
+                            applications to dynamic websites, each project reflects my commitment to quality and functionality. Check them out! </p>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-12 text-center mb-2">
+
+                                        <ul class="list-inline mb-4" id="portfolio-filters">
+                                            <li class="btn btn-secondary active" data-category="ALL"><i class="fa fa-star me-2"></i> ALL
+                                            </li>
+                                            <li class="btn btn-secondary" data-category="Programming"><i class="fa fa-laptop-code me-2"></i> Programming
+                                            </li>
+                                            <li class="btn btn-secondary" data-category="Development"><i class="fa fa-mobile-alt me-2"></i> Development
+                                            </li>
+                                            <li class="btn btn-secondary" data-category="GraphicDesign"><i class="fa fa-paint-brush me-2"></i> Graphic Design
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="row portfolio-container">
+                                    {% for content in contents %}
+                                        <div class="col-md-3 mb-2 portfolio-item" data-category="{{ content.section }}">
+                                            <div class="position-relative overflow-hidden mb-2">
+                                                {% if content.image %}
+                                                <img class="img-fluid w-100" src="{{ content.image.url }}" alt="">
+                                                <div class="portfolio-btn d-flex align-items-center justify-content-center">
+                                                    <a href="{{ content.image.url }}" data-lightbox="portfolio">
+                                                        <i class="bi bi-plus text-light"></i>
+                                                    </a>
+                                                </div>
+                                                {% endif %}
+                                            </div>
+                                            <p>{{ content.details }}</p>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                    <!-- Portfolio End -->
+
+                    
+
+                    <!-- Testimonial Start -->
+                    <section class="py-5 border-bottom wow fadeInUp" data-wow-delay="0.1s">
+
+                        <h1 class="title pb-3 mb-5">Testimonial</h1>
+                        <p class="mb-4">See what others have to say about my works! Here are testimonials from clients and collaborators
+                            who have experienced my web development expertise firsthand.Your feedback matters too!.</p>
+                        <div class="owl-carousel testimonial-carousel">
+                            {%for testimonial in testimonies%}
+                            <div class="text-left">
+                                <i class="fa fa-3x fa-quote-left text-primary mb-4"></i>
+                                <p class="fs-4 mb-4">{{testimonial.test_details}}</p>
+                                <div class="d-flex align-items-center">
+                                    <img class="img-fluid" src="{{ testimonial.image.url }}" style="width: 60px; height: 60px; border-radius: 50%;">
+                                    <div class="ps-3">
+                                        <p class="text-primary fs-5 mb-1">{{testimonial.test_client_name}}</p>
+                                        <i>{{testimonial.test_client_profess}}</i>
+                                    </div>
+                                </div>
+                            </div>
+                            {%endfor%}
+
+                            
+                        </div>
+                    </section>
+                    <!-- Testimonial End -->
+
+                    <!-- Contact Start -->
+                    <section class="py-5 wow fadeInUp" data-wow-delay="0.1s" id="contact">
+                        <h1 class="title pb-3 mb-5">Contact Me</h1>
+						<p class="mb-4">Got a project in mind or need help with web development? Feel free to reach out whether it's 
+                            Python, Django, JavaScript or heneral web solutions, I'm here to help. Drop a message, and I'll get back to you as soon as possible. </p>
+                        <br>
+                        
+                        
+
+                        <form method="POST" action="{% url 'email_compose' %}" class="composeForm">
+                            {% csrf_token %}
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text"  name="sender_name" class="form-control border-0 bg-secondary"  placeholder="Your Name">
+                                        <label for="name">Your Name</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" name="sender_email" class="form-control border-0 bg-secondary"  placeholder="Your Email">
+                                        <label for="email">Your Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control border-0 bg-secondary" name="subject" placeholder="Subject">
+                                        <label for="subject">Subject</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control border-0 bg-secondary" name="message"  placeholder="Leave a message here"style="height: 200px"></textarea>
+                                        <label for="message">Message</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </section>
+                    <!-- Contact End -->
+                 <!-- Subscribe Start -->
+                 <section class="wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="bg-secondary text-center p-5">
+                        <h1 class="text-white font-weight-bold">Never Miss an Update!</h1>
+                        <p class="text-white">Stay ahead with the latest trends in web development</p>
+                        <div class="position-relative w-100">
+
+                            
+                            
+                            <form method="POST" action="{% url 'subscribe_newsletter' %}">
+                                {% csrf_token %}
+                                <input class="form-control bg-dark border-0 w-100 py-3 ps-4 pe-5" name="email" type="email" placeholder="Your email" required>
+                                <button type="submit" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Subscribe</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Subscribe End -->
+
+                 
+    </body>
+</html>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const filterButtons = document.querySelectorAll("#portfolio-filters li");
+        const portfolioItems = document.querySelectorAll(".portfolio-item");
+
+        filterButtons.forEach(button => {
+            button.addEventListener("click", function () {
+                // Remove "active" class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove("active"));
+                this.classList.add("active");
+
+                const selectedCategory = this.getAttribute("data-category");
+
+                portfolioItems.forEach(item => {
+                    if (selectedCategory === "ALL" || item.getAttribute("data-category") === selectedCategory) {
+                        item.style.display = "block";
+                    } else {
+                        item.style.display = "none";
+                    }
+                });
+            });
+        });
+    });
+</script>
+
+
+{% endblock %}
